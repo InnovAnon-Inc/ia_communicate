@@ -31,6 +31,9 @@ from structlog                               import get_logger
 
 logger = get_logger()
 
+class CommunicateError(Exception):
+	""" Unexpected Status Code """
+
 @retry((
 	ConnectError,
 	ConnectTimeout,
@@ -50,7 +53,8 @@ async def communicate(client:AsyncClient, url:str, message:str, uid:str,)->str:
 	response               = await client.get(url, params=params,)
 	if (response.status_code != 200):
 		await logger.awarn('status code: %s', response.status_code,)
-		return None
+		#return None
+		raise CommunicateError(str(response.status_code))
 	content :bytes         = response.content
 	result  :str           = content.decode('utf-8')
 	await logger.ainfo('response: %s', result,)
