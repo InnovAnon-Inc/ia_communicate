@@ -52,7 +52,8 @@ async def communicate(client:AsyncClient, url:str, message:str, uid:str,)->str:
 	#response               = await client.get(url, params=params, timeout=None,) # TODO 600 ?
 	response               = await client.get(url, params=params,)
 	if (response.status_code != 200):
-		await logger.awarn('status code: %s', response.status_code,)
+		#await logger.awarn('status code: %s', response.status_code,)
+		await logger.aerror('status code: %s', response.status_code,)
 		#return None
 		raise CommunicateError(str(response.status_code))
 	content :bytes         = response.content
