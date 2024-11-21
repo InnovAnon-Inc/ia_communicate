@@ -43,7 +43,7 @@ class CommunicateError(Exception):
 	RemoteProtocolError,
 	WriteError,
 	WriteTimeout,
-), tries=0, delay=1, backoff=2, max_delay=None, is_async=True)
+), tries=-1, delay=1, backoff=2, max_delay=None, is_async=True)
 async def communicate(client:AsyncClient, url:str, message:str, uid:str,)->str:
 	params  :Dict[str,str] = {
 		'message': message,
