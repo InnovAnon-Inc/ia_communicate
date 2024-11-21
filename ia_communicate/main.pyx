@@ -59,6 +59,7 @@ async def communicate(client:AsyncClient, url:str, message:str, uid:str,)->str:
 	content :bytes         = response.content
 	result  :str           = content.decode('utf-8')
 	await logger.ainfo('response: %s', result,)
+	assert isinstance(result,str), type(result)
 	return result
 
 def get_limits(
