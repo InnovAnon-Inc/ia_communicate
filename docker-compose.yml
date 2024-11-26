@@ -4,7 +4,7 @@ services:
     build:
       context:        .
       tags:
-        - ia_communicate:latest
+        - innovanon/ia_communicate:latest
     restart:          no
     logging:
       driver:         syslog   
