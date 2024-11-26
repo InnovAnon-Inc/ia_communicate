@@ -8,6 +8,7 @@ services:
         -           ia_communicate:latest
         - innovanon/ia_communicate
         -           ia_communicate
+    image:            innovanon/ia_communicate
     restart:          no
     logging:
       driver:         syslog   
