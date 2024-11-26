@@ -5,6 +5,9 @@ services:
       context:        .
       tags:
         - innovanon/ia_communicate:latest
+        -           ia_communicate:latest
+        - innovanon/ia_communicate
+        -           ia_communicate
     restart:          no
     logging:
       driver:         syslog   
